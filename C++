@@ -1,0 +1,528 @@
+#include<iostream>
+#include<string>
+#include<conio.h>
+#include<iomanip>
+#include<ctime>
+#include<process.h>
+#include<stdlib.h>
+#include <sapi.h>
+
+using namespace std;
+
+struct acc
+
+{
+string  name;
+string  lname;
+string NIC;
+string password;
+int amou;
+int accid;
+static int count;
+};
+
+int acc::count=10;
+
+void text_animation(char a[100]);
+void repchar (char,int);
+void time();
+void input(acc*);
+
+int speech();
+int i=11;
+
+int main()
+{
+system ("color F5");
+                bool flag=false,idfound=false;
+                const int size=20;
+
+char ch='a',choice='0',ans='a';
+
+int id,idfast,deposit,withdraw,fastcash;
+acc arr[size];
+string pass;
+arr[0].name="Ariba";
+arr[0].lname="Khan";
+arr[0].accid=1;
+arr[0].NIC=42101-1234567-8;
+
+arr[0].amou=500;
+
+arr[0].password="1";
+
+arr[1].name="Daniyal";
+arr[1].lname="Khan";
+arr[1].accid=2;
+arr[1].amou=500;
+arr[1].password="2";
+
+arr[1].NIC=42101-1234567-9;
+
+arr[2].name="Javeria";
+
+arr[2].lname="Aslam";
+
+arr[2].accid=3;
+
+arr[2].NIC=42101-1234567-1;
+
+arr[2].amou=500;
+
+arr[2].password="3";
+
+arr[3].name="Faraz";
+
+arr[3].lname="Khan";
+
+arr[3].accid=4;
+
+arr[3].NIC=42101-1234567-4;
+
+arr[3].amou=500;
+
+arr[3].password="4";
+
+arr[4].name="Sabreena";
+
+arr[4].lname="Khan";
+
+arr[4].accid=5;
+
+arr[4].NIC=42101-1234567-5;
+
+arr[4].amou=5007;
+
+arr[4].password="5";
+
+arr[5].name="Pashmina";
+
+arr[5].lname="Khan";
+
+arr[5].accid=6;
+
+arr[5].NIC=42101-1234567-6;
+
+arr[5].amou=500;
+
+arr[5].password="6";
+
+arr[6].name="Mahad";
+
+arr[6].lname="Ahmed";
+
+arr[6].accid=7;
+
+arr[6].NIC=42101-1234567-7;
+
+arr[6].amou=500;
+
+arr[6].password="7";
+
+arr[7].name="Hadeed";
+
+arr[7].lname="Ilyas";
+
+arr[7].accid=8;
+
+arr[7].NIC=42101-1234568-7;
+
+arr[7].amou=500;
+
+arr[7].password="8";
+
+arr[8].name="Ali";
+
+arr[8].lname="Hamdan";
+
+arr[8].accid=9;
+
+arr[8].NIC=42101-1234569-7;
+
+arr[8].amou=500;
+
+arr[8].password="9";
+
+arr[9].name="Ayesha";
+
+arr[9].lname="Khan";
+
+arr[9].accid=10;
+
+arr[9].NIC=42101-1234560-7;
+
+arr[9].amou=500;
+
+arr[9].password="10";
+
+arr[10].name="Nazia";
+
+arr[10].lname="Khan";
+
+arr[10].accid=11;
+
+arr[10].NIC=42101-1234566-7;
+
+arr[10].amou=500;
+
+arr[10].password="11";
+
+ 
+
+start:
+
+repchar('=',119);
+
+text_animation("\t\t\t\t\tWelcome to Mini ATM Machine\n");
+
+cout<<endl;
+
+repchar('=',119);
+
+cout<<"Enter\nC to create account\nL for Login\nH for help\nE for exit "<<endl;cin>>ch;
+
+switch(ch)
+
+{
+
+case 'C':case'c':{input (arr);system("CLS");
+
+                cout<<"Your account Id is : "<<arr[i].accid<<endl;
+
+                cout<<"Your account Password is : "<<arr[i].password<<endl;
+
+                system("pause");
+
+                               
+
+                                 i++;system("CLS");
+
+                                goto start;
+
+                                break;}//case1
+
+ 
+
+                case ('L'):case'l' :{cout<<"\nEnter your account Id: ";cin>>id;
+
+                      cout<<"\nEnter your account Password : ";cin>>pass;
+
+                         for(int l=0;l<=i-1;l++)
+
+                             {
+
+                                                if(id==arr[l].accid && pass==arr[l].password)
+
+                                                         { choice:
+
+                                                 system("CLS");
+
+                                                cout<<endl<<endl<<"\t\t\t\t\tHello "<<arr[l].name<<" "<<arr[l].lname<<"!"<<endl;
+
+            system("color 3f");
+
+                                                here:
+
+                                                repchar('=',119);
+
+                                               
+
+                                                 text_animation("\t \t \t\t\t SELECT YOUR TRANSACTION");
+
+                                                cout<<endl;
+
+                                                repchar('=',119);
+
+                                                cout<<"Enter\n\tD to Deposit\n "<<setw(100)<<"F for Fund transfer \n"<<endl<<"\tW for Cash Withdrawl\n"<<setw(98)<<"\tI for Balance Enquiry \n"<<endl<<"\tM for Main Menu\n"<<setw(100)<<"E to exit\n";
+
+                                                cin>>choice;
+
+                                                switch(choice)
+
+                                                {case'D':{cout<<"Enter amount to deposit"<<endl;
+
+                                                                      cin>>deposit;
+
+                                                                       arr[l].amou+=deposit;
+
+                                                                      cout<<"Amount deposited\a\a\nYour current balance now is : "<<arr[l].amou<<endl;
+
+                                      time();
+
+                                                                                                                                                  system("PAUSE");
+
+                                                                                                                                                  system("CLS");
+
+                                                                                                                                                  goto here;break;}//case1
+
+                                               
+
+                                                 case 'W':case'w': {cout<<"Enter amount to withdraw(must be less than 20,000)"<<endl;
+
+                                                                      cin>>withdraw;
+
+                                                                                                                                  if(withdraw>arr[l].amou)
+
+                                                                                                                                  {cout<<"You do not have this much amount to withdraw\n";goto here;break;}
+
+                                                                                                                                  if(withdraw>=20,000)
+
+                                                                                                                                                  {cout<<"This much amount cannnot be withdraw : ";goto here;break;}
+
+                                                                       arr[l].amou-=withdraw;
+
+                                                                                                                                  cout<<"Amount is withdrawed\nYour current balance now is : "<<arr[l].amou<<endl;
+
+                                                                                                                                  time();
+
+                                                                                                                                  system("PAUSE");
+
+                                                                                                                                  system("CLS");
+
+                                                                                                                                  goto here;break;}//case2
+
+                                                                                                                                 
+
+                                                                                                                                 
+
+                                                                                   
+
+                                                 case 'F':case'f':{cout<<"Enter id to specify account you want money to transfer : ";cin>>idfast;
+
+                                                                                   for(int j=0;j<i-1;j++)
+
+                                                                                                                                                {if(idfast==arr[j].accid)
+
+                                                                                                                                        {cout<<"Id found \n Enter the amount you wish to transfer : ";
+
+                                                                                                                                               cin>>fastcash;
+
+                                                                                                                                                                                   arr[j].amou+=fastcash;
+
+                                                                                                                                   cout<<"Amount has been transfered \n";
+
+                                                                                                                                   system("PAUSE");
+
+                                                                                                                                   system("CLS");
+
+                                                                                                                                   goto here;break;}
+
+                                                                                                                                                                else idfound=true;}break;//for loop
+
+                                                                                                                                  
+
+                                                                                                                                                 if(idfound==true) cout<<"Sorry Id you entered is not found in the system\nPlease try again!";
+
+                                                                                system("PAUSE");
+
+                                                                                                                                                system("CLS");
+
+                                                                                goto here; break;}//fast cash case
+
+            
+
+                                                 case 'I':{cout<<"Your current Balance is : "<<arr[l].amou<<endl<<"Do you wish to do further tansaction? (Y/N)";cin>>ans;
+
+                                                                if(ans=='Y')
+
+                                                                                  goto here;
+
+                                                                else exit(0);}
+
+                                                case'M':{goto start;break;}                           
+
+                                                 
+
+                                                 case 'E':exit(0);                                
+
+                                               
+
+                                               
+
+                                                 }break;//choice/transactions
+
+                                               
+
+                                               
+
+                                                }//if
+
+                                                else flag=true;
+
+                                                }//for loop
+
+                                                if (flag==true) cout<<"Incorrect Id or Password \nTry Again!\n";
+
+                                }break;//case2
+
+case 'H':case 'h':{speech();goto start;break;}//helpcase3
+
+case 'E':case 'e':break;
+
+}//switch1
+
+}//main
+
+ 
+
+//----------------------------------Functions-------------------------------------------------------------------------------
+
+void input(acc *ptracc)
+
+{system("color 5f");
+
+cout<<"Enter your First name"<<endl;
+
+cin>>ptracc[i].name;
+
+cout<<"Enter your Last name"<<endl;
+
+cin>>ptracc[i].lname;
+
+label :
+
+cout<<"Enter your NIC in the format (42101-xxxxxxx-x)"<<endl;
+
+cout<<"42101-";cin>>ptracc[i].NIC;
+
+if((ptracc[i].NIC).length()==9)
+
+{
+
+cout<<"Enter  your password"<<endl;
+
+cin>>ptracc[i].password;
+
+cout<<"Enter the amount you want to deposit (>=500): ";cin>>ptracc[i].amou;
+
+if(ptracc[i].amou>=500)
+
+{ptracc[i].accid=(++acc::count);
+
+acc::count++;
+
+}//if
+
+else {cout<<"You have entered less amount Try again!";exit(0);}
+
+}//if
+
+else {cout<<"Incorrect format of NIC please try again !";goto label;
+
+exit(0);}
+
+}
+
+ 
+
+ 
+
+void time ()
+
+{   time_t t = time(NULL);
+
+tm* timePtr = localtime(&t);
+
+               
+
+cout << "Date     " <<(timePtr->tm_mday)<<"/"<< (timePtr->tm_mon)+1 <<"/"<< (timePtr->tm_year)+1900<<"\t"
+
+<< "Time     " << (timePtr->tm_hour)<<":"<< (timePtr->tm_min)<<":"<<(timePtr->tm_sec)<<endl;}
+
+ 
+
+ 
+
+int speech()
+
+{system("color 8f");
+
+                ISpVoice * pVoice = NULL;
+
+ 
+
+    if (FAILED(::CoInitialize(NULL)))
+
+        return EXIT_FAILURE;
+
+ 
+
+    HRESULT hr = CoCreateInstance(CLSID_SpVoice, NULL, CLSCTX_ALL, IID_ISpVoice, (void **)&pVoice);   
+
+                if(SUCCEEDED(hr))
+
+                {                             
+
+                                std::wstring in = L"";
+
+ 
+
+                                                                                                               
+
+                                std::cout<<"1.Ensure that you change the PIN number first after using your card also change the PIN number frequently  \n\n2.Ensure that nobody else can see you entering your PIN number at the atm.\n\n"
+
+                                                <<"3.Do not use the ATM when strangers are inside the ATM counter.\n\n4.Do not seek the assistance of stranger while operating the ATM machine.\n\n"
+
+                                                <<"5.Should you notice anything strange or suspicious at the ATM counter refrain from using the same.  \n\n6.Ensure that you check your account statement from time to time.\n\n"
+
+                                                <<"7.In case you lose your ATM card call 000-111-222-333 to block your card and avoid any misuse of the card.\n\n8.Do not disclose your PIN numbers to others.  \n\n";
+
+                                               
+
+                               
+
+                                hr = pVoice->Speak(L"Ensure that you change the PIN number first after using your card also change the PIN number frequently  ", 0, NULL);       
+
+                                hr = pVoice->Speak(L"Ensure that nobody else can see you entering your PIN number at the ATM.  ", 0, NULL); 
+
+                    hr = pVoice->Speak(L"Do not use the ATM when strangers are inside the ATM counter.  ", 0, NULL); 
+
+                                hr = pVoice->Speak(L"Do not seek the assistance of stranger while operating the ATM machine.  ", 0, NULL); 
+
+                                hr = pVoice->Speak(L"Should you notice anything strange or suspicious at the ATm counter refrain from using the same.  ", 0, NULL); 
+
+                                hr = pVoice->Speak(L"Ensure that you check your account statement from time to time. ", 0, NULL); 
+
+                                hr = pVoice->Speak(L"In case you lose your ATM card call 000-111-222-333 to block your card and avoid any misuse of the card.  ", 0, NULL);
+
+                                hr = pVoice->Speak(L"Do not disclose your PIN numbers to others.  \n", 0, NULL); 
+
+                                pVoice->Release();
+
+        pVoice = NULL;
+
+                }
+
+    ::CoUninitialize();
+
+ 
+
+                return EXIT_SUCCESS;}
+
+ 
+
+void repchar (char c,int n)
+
+{for (int i=0;i<=n;i++)
+
+{cout<<c;}
+
+cout<<endl;
+
+}
+
+ 
+
+void text_animation(char a[100])
+
+{int i;double k;
+
+for(i=0;a[i]!='\0';++i)
+
+{ for(k=0;k<3000000;++k);
+
+  cout<<a[i];
+
+ 
+
+}}
